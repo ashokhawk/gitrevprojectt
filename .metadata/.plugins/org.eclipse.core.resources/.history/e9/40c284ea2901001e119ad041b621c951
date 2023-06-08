@@ -1,0 +1,29 @@
+package com.Store;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration
+public class ConfigureApp {
+
+	@Bean
+	@Profile("QA")
+	public void QAPro() {
+		System.out.println("QA env");
+	}
+	
+	@Bean
+	@Profile("Dev")
+	public void DevPro() {
+		System.out.println("Dev env");
+	}
+	
+	@Bean
+	@Profile("Prod")
+	public void Prod() {
+		System.out.println("Prod env");
+	}
+	
+	
+}

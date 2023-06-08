@@ -1,0 +1,8 @@
+package com.flipkart;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FlipkartService {
+
+}

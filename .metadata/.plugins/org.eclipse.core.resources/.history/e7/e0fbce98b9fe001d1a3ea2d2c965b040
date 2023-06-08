@@ -1,0 +1,16 @@
+package com.vehicle.service;
+
+import org.springframework.stereotype.Service;
+
+import com.vehicle.Vehicle;
+
+@Service
+public class BikeService implements Vehicle {
+
+	@Override
+	public String getVehicle() {
+		// TODO Auto-generated method stub
+		return "Yamaha Bike";
+	}
+
+}

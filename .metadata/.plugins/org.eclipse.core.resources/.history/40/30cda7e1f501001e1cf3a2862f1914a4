@@ -1,0 +1,21 @@
+package com.flipkart;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FlipkartController {
+
+	@Autowired
+	FlipkartService fs;
+	
+	public String setOrders(@RequestBody List<Order> order) {
+		return fs.setOrders(order);
+	}
+
+	
+	
+}

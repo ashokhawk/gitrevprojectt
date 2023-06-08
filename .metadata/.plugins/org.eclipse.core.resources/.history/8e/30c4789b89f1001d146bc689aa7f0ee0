@@ -1,0 +1,105 @@
+package com.studentresults.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.studentresults.entity.MarkSheet;
+import com.studentresults.entity.Results;
+import com.studentresults.entity.Student;
+import com.studentresults.service.ResultsService;
+
+
+@RestController
+public class ResultsController {
+
+	@Autowired 
+	ResultsService rs;
+	@Autowired
+	RestTemplate rt;
+	
+
+	@PostMapping(value = "/setResults")
+	public String setResults(@RequestBody List<Results> result) {
+		
+		String url1="http://localhost:8080/getNameByRollNo/";
+		String url2="http://localhost:8080/getPercentByRollNo/";
+		String url3="http://localhost:8081/getSem2TotalByRollNo/";
+		String url4="http://localhost:8081/getSem1TotalByRollNo/";
+		
+		List<Results> res=result;
+		for(Results x:res) {
+			int roll=x.getRollNumber();
+		
+		ResponseEntity<Integer> response1 = rt.exchange(url3+roll, HttpMethod.GET, null, Integer.class);
+		int sem1total = response1.getBody();
+		
+		ResponseEntity<Integer> response2 = rt.exchange(url4+roll, HttpMethod.GET, null, Integer.class);
+		int sem2total = response2.getBody();
+		
+		int total=sem1total+sem2total;
+		
+		ResponseEntity<Integer> response3 = rt.exchange(url2+roll, HttpMethod.GET, null, Integer.class);
+		int attendance = response3.getBody();
+		
+		if (attendance > 90) {
+			int total2 = total + 5;
+			x.setTotalMarks(total2/2);
+		}
+		
+		else {
+			x.setTotalMarks(total/2);
+		}
+		
+		
+		if (x.getTotalMarks() > 100) {
+			x.setTotalMarks(100);
+		}
+		else {
+			x.setTotalMarks(total/2);
+		} 
+		
+		int per = x.getTotalMarks() / 2;
+		x.setPercentage(per);
+		
+		ResponseEntity<String> response4 = rt.exchange(url1+roll, HttpMethod.GET, null, String.class);
+		String name = response4.getBody();
+		x.setName(name);
+	
+	return rs.setResults(x);
+		}
+}
+
+@GetMapping(value = "/getAllResult")
+public List<Results> getAllResult() {
+	return rs.getAllResult();
+}
+//@GetMapping(value = "/gettopper")
+//public Results gettopper() {
+//	return rs.gettopper();
+//} 
+//@GetMapping(value = "/getrollnumberbetween170And190")
+//public List<Integer> getrollnumber() {
+//	return rs.getrollnumber();
+//}
+//@GetMapping(value = "/gettop3")
+//public List<Results> gettop3() {
+//	return rs.gettop3();
+//}
+//@GetMapping(value = "/getstudentbetween170And190")
+//public List<Student> getstudentbw170and190() {
+//	return rs.getstudentbw170and190();
+//}
+//}
+//	}
+
+	
+}

@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "hi",
+    "type": "java.lang.String",
+    "description": "A description for 'hi'"
+  },
+  {
+    "name": "hi",
+    "type": "java.lang.String",
+    "description": "A description for 'hi'"
+  }
+]}

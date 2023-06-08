@@ -1,0 +1,29 @@
+package com.example.demo;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration
+public class ConfigureApp {
+
+	@Bean
+	@Profile("QA")
+	public String QAPro() {
+		return "QA env";
+	}
+	
+	@Bean
+	@Profile("Dev")
+	public String DevPro() {
+		return "Dev env";
+	}
+	
+	@Bean
+	@Profile("Prod")
+	public String Prod() {
+		return "Prod env";
+	}
+	
+	
+}

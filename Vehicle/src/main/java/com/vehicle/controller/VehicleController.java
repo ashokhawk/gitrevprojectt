@@ -1,0 +1,35 @@
+package com.vehicle.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.vehicle.Vehicle;
+
+@RestController
+public class VehicleController {
+//	@Qualifier("Car")
+
+	@Autowired
+	Vehicle v;
+	
+	@Value("${spring.jpa.hibernate.ddl-auto}")
+	private boolean a;
+	
+	@GetMapping(value="/getValue")
+	public boolean getValue() {
+		return a;
+	}
+	
+	@GetMapping(value = "/getVehicleType")
+	public String getType() {
+		return v.getVehicle();
+	}
+	
+	
+	
+	
+	
+
+}

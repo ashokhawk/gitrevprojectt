@@ -1,0 +1,3 @@
+spring.profiles.active=QA,Dev,Prod
+#spring.profiles.active=Dev
+#spring.profiles.active=Prod

@@ -1,0 +1,10 @@
+package com.transaction.entity;
+
+public class Sender {
+	private String name;
+	private int id;
+	private int amount;
+	
+	
+
+}

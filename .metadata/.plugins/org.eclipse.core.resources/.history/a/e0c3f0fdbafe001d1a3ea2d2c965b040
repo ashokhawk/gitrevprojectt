@@ -1,0 +1,17 @@
+package com.vehicle.service;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.vehicle.Vehicle;
+
+@Service
+@Qualifier("bike")
+public class BikeService implements Vehicle {
+
+	
+	public String getVehicle() {
+		return "Yamaha Bike";
+	}
+
+}

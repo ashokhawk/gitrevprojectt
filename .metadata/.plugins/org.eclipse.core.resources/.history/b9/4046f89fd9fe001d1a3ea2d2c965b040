@@ -1,0 +1,17 @@
+package com.transaction.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.transaction.entity.GooglePay;
+
+@RestController
+public class TransactionController {
+
+	@PostMapping("/setSender") {
+		public String setSender(@RequestBody GooglePay gpay) {
+			
+		}
+	}
+	
+}

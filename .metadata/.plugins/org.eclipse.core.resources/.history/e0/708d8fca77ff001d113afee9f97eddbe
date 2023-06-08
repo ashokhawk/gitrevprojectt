@@ -1,0 +1,30 @@
+package com.trainer;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+public class TrainerController {
+	@Autowired
+	TrainerService ts;
+	
+	@PostMapping(value = "/setTrainers")
+	public String setTrainers(@RequestBody List<Trainer> trainers) {
+		return ts.setTrainers(trainers);
+	}
+	
+	@GetMapping(value = "/getTrainers")
+	public List<Trainer> getTrainers() {
+		return ts.getTrainers();
+	}
+	
+	@GetMapping(value = "/getTrainerById/{id}")
+	public Trainer UpdateTrainerById(@PathVariable int id,@RequestBody Trainer trainer) {
+		return ts.getTrainerById(id,trainer);
+	}
+	
+}

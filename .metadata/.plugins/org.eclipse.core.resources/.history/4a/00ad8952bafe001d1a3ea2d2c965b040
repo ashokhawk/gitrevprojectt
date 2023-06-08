@@ -1,0 +1,12 @@
+package com.vehicle.service;
+
+import com.vehicle.Vehicle;
+
+public class CarService implements Vehicle {
+
+	@Override
+	public String getVehicle() {
+		return "Hyundai Car";
+	}
+
+}

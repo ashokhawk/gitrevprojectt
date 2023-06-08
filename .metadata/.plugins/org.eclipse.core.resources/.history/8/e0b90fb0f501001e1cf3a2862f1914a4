@@ -1,0 +1,17 @@
+package com.flipkart;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FlipkartService {
+
+	@Autowired
+	FlipkartDao fd;
+
+	public String setOrders(List<Order> order) {
+		return fd.setOrder(order);
+	}
+}

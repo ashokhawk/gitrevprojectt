@@ -1,0 +1,6 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/Trainers
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+springdoc.api-docs.path=/trainer-doc
+springdoc.swagger-ui.path=/trainerUI.html

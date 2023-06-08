@@ -1,0 +1,12 @@
+package com.transaction.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.transaction.entity.GooglePay;
+import com.transaction.entity.Receiver;
+
+public interface SenderRepository extends JpaRepository<Receiver, Integer> {
+
+	
+
+}

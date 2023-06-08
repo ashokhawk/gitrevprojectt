@@ -1,0 +1,18 @@
+package com.flipkart;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class FlipkartDao {
+
+	@Autowired
+	ProductRepository orderRepo;
+
+	public String setOrders(List<Product> prod) {
+		orderRepo.saveAll(prod);
+		return "saved";
+	}
+}
